@@ -1,9 +1,8 @@
 const http = require('http');
 const url = require('url');
-const port = 3000;
 const { getAllCategories, createCategory } = require('./logic/category');
 const { getAllMedias, createMedia } = require('./logic/media');
-
+const port = 3000;
 
 const server = http.createServer(async(req, res) => {
 
@@ -15,24 +14,15 @@ const server = http.createServer(async(req, res) => {
   if (path === '/api/category/list') {
     const categories = await getAllCategories();
     return res.end(JSON.stringify({data: categories }));
-
   } else if (path === '/api/category/add') {
-    const category = {
-        id:1,
-        name: 'Category 1'
-    }
+    const category = {}
     await createCategory(category);
     return res.end(JSON.stringify({message: 'Catégorie créée avec succès' }));
-
   } else if (path === '/api/media/list') {
     const medias = await getAllMedias();
     return res.end(JSON.stringify({data: medias }));
   } else if (path === '/api/media/add') {
-    const media = {
-        id:1,
-        category_id: 1,
-        name: 'Media 3'
-    }
+    const media = {}
     await createMedia(media);
     return res.end(JSON.stringify({message: 'Media crée avec succès' }));
   }
