@@ -1,7 +1,8 @@
 const http = require('http');
 const url = require('url');
-const { getAllCategories, createCategory } = require('./category');
-const { getAllMedias, createMedia } = require('./media');
+const port = 3000;
+const { getAllCategories, createCategory } = require('./logic/category');
+const { getAllMedias, createMedia } = require('./logic/media');
 
 
 const server = http.createServer(async(req, res) => {
@@ -38,7 +39,6 @@ const server = http.createServer(async(req, res) => {
     
 });
 
-const port = 3000;
 server.listen(port, () => {
   console.log(`Le serveur écoute sur le port ${port}`);
 });
